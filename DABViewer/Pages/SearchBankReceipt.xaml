@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="DABViewer.Pages.SearchBankReceipt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DABViewer.Pages"
+             xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox controls:TextBoxHelper.Watermark="Bitte den Suchbegriff eingeben..." 
+                 Grid.Row="1" 
+                 Grid.Column="0" VerticalAlignment="Center" 
+                 TextAlignment="Left" 
+                 Text="{Binding SearchKeyWord, UpdateSourceTrigger=PropertyChanged}" 
+                 FontSize="12"
+                 BorderBrush="#CC119EDA"/>
+        <DataGrid 
+            Grid.Row="3" 
+            BorderThickness="1" 
+            ItemsSource="{Binding MyData}" 
+            SelectedItem="{Binding SelectedData}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Dateiname" Width="300"  Binding="{Binding FullName}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="gespeichert am" Width="300" Binding="{Binding LastAccess, StringFormat=dd.MM.yyyy}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>          
+        </DataGrid>
+    </Grid>
+</UserControl>
