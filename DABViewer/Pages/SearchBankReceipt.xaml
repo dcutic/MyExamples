@@ -5,19 +5,56 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DABViewer.Pages"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="1000">
+             mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Depotinhaber" Padding="0,7" FontWeight="Bold"></TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding DepotInhaber}" controls:TextBoxHelper.Watermark="Depotinhaber eingeben..." VerticalAlignment="Center"></TextBox>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Stamm-Nr." Padding="0,7" FontWeight="Bold"></TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Stammnummer}" controls:TextBoxHelper.Watermark="Stamm-Nr. eingeben..." VerticalAlignment="Center"></TextBox>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Datum" Padding="0,7" FontWeight="Bold"></TextBlock>
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="von" Padding="0,7"></TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="bis" Padding="7,7"></TextBlock>
+                <DatePicker Grid.Column="1" Text="{Binding StartDate}" SelectedDate="{Binding SelectedStartDate}" VerticalAlignment="Center"/>
+                <DatePicker Grid.Column="3" Text="{Binding EndDate}" SelectedDate="{Binding SelectedEndDate}" VerticalAlignment="Center"/>
+            </Grid>
+            <TextBlock Grid.Column="3" Grid.Row="0" Text="Transaktionsart" Padding="0,7" FontWeight="Bold"></TextBlock>
+            <ComboBox Grid.Column="4" Grid.Row="0" controls:TextBoxHelper.Watermark="Transaktionsart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding TransactionTypes}" SelectedItem="{Binding SelectedTransactionType}"/>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="Belegart" Padding="0,7" FontWeight="Bold"></TextBlock>
+            <ComboBox Grid.Column="4" Grid.Row="1" controls:TextBoxHelper.Watermark="Belegart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding DocumentTypes}" SelectedItem="{Binding SelectedDocumentType}"/>
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="ISIN" Padding="0,7" FontWeight="Bold"></TextBlock>
+            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ISIN}" controls:TextBoxHelper.Watermark="ISIN eingeben..." VerticalAlignment="Center"></TextBox>
+        </Grid>
         <TextBox controls:TextBoxHelper.Watermark="Bitte den Suchbegriff eingeben..." 
                  Grid.Row="1" 
                  Grid.Column="0" VerticalAlignment="Center" 
@@ -26,7 +63,7 @@
                  FontSize="12"
                  BorderBrush="#CC119EDA"/>
         <DataGrid 
-            Grid.Row="3" 
+            Grid.Row="4" 
             BorderThickness="1" 
             ItemsSource="{Binding MyData}" 
             SelectedItem="{Binding SelectedData}"
@@ -47,7 +84,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-            </DataGrid.Columns>          
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>
