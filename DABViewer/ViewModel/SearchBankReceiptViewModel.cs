@@ -18,6 +18,7 @@ namespace DABViewer.ViewModel
         private ObservableCollection<Data> _myData;
         private string _searchKeyWord;
         private Data _selectedData;
+        private SearchCriterias _searchCriterias;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string name)
@@ -73,6 +74,21 @@ namespace DABViewer.ViewModel
                 }
             }
         }
+        public SearchCriterias SeachCriterias
+        {
+            get
+            {
+                return _searchCriterias;
+            }
+            set
+            {
+                if(_searchCriterias != value)
+                {
+                    _searchCriterias = value;
+                    NotifyPropertyChanged("SeachCriterias");
+                }
+            }
+        }
         public SearchBankReceiptViewModel()
         {
             MyData = new ObservableCollection<Data>();
@@ -84,6 +100,7 @@ namespace DABViewer.ViewModel
                 var test = new Data { FullName = item.Name, LastAccess = item.LastAccessTime, DepotNummer = counter++ };
                 MyData.Add(test);     
             }
+            SeachCriterias = new SearchCriterias();
         }
         private void SetFilter()
         {

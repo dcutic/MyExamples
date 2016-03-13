@@ -67,6 +67,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\DocumentTypes.cs" />
+    <Compile Include="Model\SearchCriterias.cs" />
+    <Compile Include="Model\TransactionTypes.cs" />
     <Compile Include="ViewModel\SearchBankReceiptViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -32,9 +32,9 @@
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Depotinhaber" Padding="0,7" FontWeight="Bold"></TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding DepotInhaber}" controls:TextBoxHelper.Watermark="Depotinhaber eingeben..." VerticalAlignment="Center"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SeachCriterias.DepotInhaber}" controls:TextBoxHelper.Watermark="Depotinhaber eingeben..." VerticalAlignment="Center"></TextBox>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Stamm-Nr." Padding="0,7" FontWeight="Bold"></TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Stammnummer}" controls:TextBoxHelper.Watermark="Stamm-Nr. eingeben..." VerticalAlignment="Center"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SeachCriterias.Stammnummer}" controls:TextBoxHelper.Watermark="Stamm-Nr. eingeben..." VerticalAlignment="Center"></TextBox>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Datum" Padding="0,7" FontWeight="Bold"></TextBlock>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -45,23 +45,23 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="von" Padding="0,7"></TextBlock>
                 <TextBlock Grid.Column="2" Grid.Row="0" Text="bis" Padding="7,7"></TextBlock>
-                <DatePicker Grid.Column="1" Text="{Binding StartDate}" SelectedDate="{Binding SelectedStartDate}" VerticalAlignment="Center"/>
-                <DatePicker Grid.Column="3" Text="{Binding EndDate}" SelectedDate="{Binding SelectedEndDate}" VerticalAlignment="Center"/>
+                <DatePicker Grid.Column="1" Text="{Binding SeachCriterias.StartDate}" SelectedDate="{Binding SeachCriterias.SelectedStartDate}" VerticalAlignment="Center"/>
+                <DatePicker Grid.Column="3" Text="{Binding SeachCriterias.EndDate}" SelectedDate="{Binding SeachCriterias.SelectedEndDate}" VerticalAlignment="Center"/>
             </Grid>
             <TextBlock Grid.Column="3" Grid.Row="0" Text="Transaktionsart" Padding="0,7" FontWeight="Bold"></TextBlock>
-            <ComboBox Grid.Column="4" Grid.Row="0" controls:TextBoxHelper.Watermark="Transaktionsart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding TransactionTypes}" SelectedItem="{Binding SelectedTransactionType}"/>
+            <ComboBox Grid.Column="4" Grid.Row="0" controls:TextBoxHelper.Watermark="Transaktionsart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding SeachCriterias.TransactionTypes}" SelectedItem="{Binding SeachCriterias.SelectedTransactionType}" DisplayMemberPath="sysText"/>
             <TextBlock Grid.Column="3" Grid.Row="1" Text="Belegart" Padding="0,7" FontWeight="Bold"></TextBlock>
-            <ComboBox Grid.Column="4" Grid.Row="1" controls:TextBoxHelper.Watermark="Belegart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding DocumentTypes}" SelectedItem="{Binding SelectedDocumentType}"/>
+            <ComboBox Grid.Column="4" Grid.Row="1" controls:TextBoxHelper.Watermark="Belegart auswählen..." VerticalAlignment="Center" ItemsSource="{Binding SeachCriterias.DocumentTypes}" SelectedItem="{Binding SeachCriterias.SelectedDocumentType}" DisplayMemberPath="sysText"/>
             <TextBlock Grid.Column="3" Grid.Row="2" Text="ISIN" Padding="0,7" FontWeight="Bold"></TextBlock>
-            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ISIN}" controls:TextBoxHelper.Watermark="ISIN eingeben..." VerticalAlignment="Center"></TextBox>
+            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding SeachCriterias.ISIN}" controls:TextBoxHelper.Watermark="ISIN eingeben..." VerticalAlignment="Center"></TextBox>
         </Grid>
-        <TextBox controls:TextBoxHelper.Watermark="Bitte den Suchbegriff eingeben..." 
+        <Button controls:TextBoxHelper.Watermark="Bitte den Suchbegriff eingeben..." 
                  Grid.Row="1" 
                  Grid.Column="0" VerticalAlignment="Center" 
-                 TextAlignment="Left" 
-                 Text="{Binding SearchKeyWord, UpdateSourceTrigger=PropertyChanged}" 
                  FontSize="12"
-                 BorderBrush="#CC119EDA"/>
+                 Content="Filtern"
+                 BorderBrush="#CC119EDA"
+                Command="{Binding StartFilteringButton}"/>
         <DataGrid 
             Grid.Row="4" 
             BorderThickness="1" 
