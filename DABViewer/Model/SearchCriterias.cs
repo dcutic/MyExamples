@@ -1,13 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DABViewer.Model
 {
     public class SearchCriterias
     {
+
         public string DepotInhaber { get; set; }
         public int Stammnummer { get; set; }
         public List<TransactionTypes> TransactionTypes { get; set; }
@@ -18,7 +19,7 @@ namespace DABViewer.Model
         public DateTime EndDate { get; set; }
         public DateTime SelectedStartDate { get; set; }
         public DateTime SelectedEndDate { get; set; }
-
+        public string ISIN { get; set; }
         public SearchCriterias()
         {
             InitializeModel();

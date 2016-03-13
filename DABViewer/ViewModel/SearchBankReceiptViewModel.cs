@@ -1,4 +1,5 @@
-﻿using DABViewer.Model;
+﻿using DABViewer.Common;
+using DABViewer.Model;
 using FirstFloor.ModernUI.Presentation;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace DABViewer.ViewModel
 {
@@ -89,6 +92,19 @@ namespace DABViewer.ViewModel
                 }
             }
         }
+        public ICommand StartFilteringCommand
+        {
+            get
+            {
+                return new DelegateCommand(StartFiltering);
+            }
+        }
+
+        private void StartFiltering(object param)
+        {
+            MessageBox.Show("Done", "OK");
+        }
+
         public SearchBankReceiptViewModel()
         {
             MyData = new ObservableCollection<Data>();
